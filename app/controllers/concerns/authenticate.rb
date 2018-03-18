@@ -24,6 +24,11 @@ module Authenticate
 
         def clear_session_state
         end
+
+        def load_token
+            payload = { data: { id: @current_user } }
+            JWT.encode @current_user
+        end
     end
 
     class_methods do
