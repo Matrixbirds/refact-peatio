@@ -7,7 +7,7 @@ module Authenticate
         end
 
         def login_with_jwt
-        @user ||= begin
+        @current_user ||= begin
             token = JWT.decode token
             User.find_by_id token["payload"]["id"]
         end
@@ -26,11 +26,8 @@ module Authenticate
         end
 
         def load_token
-            payload = { data: { id: @current_user } }
-            JWT.encode @current_user
+            payload = { data: { id: current_user } }
+            JWT.encode payload, nil, false
         end
-    end
-
-    class_methods do
     end
 end

@@ -56,6 +56,7 @@ end
 
 group :test do
     gem 'database_cleaner'
+    gem 'rspec-rails', '~> 3.7'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
